@@ -1,0 +1,57 @@
+{
+  "name": "llmaxx",
+  "version": "1.0.0",
+  "description": "LLMAXX Desktop Overlay - AI Chat Interface",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux"
+  },
+  "keywords": [
+    "ai",
+    "chat",
+    "overlay",
+    "desktop",
+    "llm"
+  ],
+  "author": "LLMAXX Team",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^24.6.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "node-fetch": "^3.3.2",
+    "systeminformation": "^5.21.15",
+    "ws": "^8.14.2"
+  },
+  "build": {
+    "appId": "com.llmaxx.app",
+    "productName": "LLMAXX",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icons/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icons/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icons/icon.png"
+    }
+  }
+}

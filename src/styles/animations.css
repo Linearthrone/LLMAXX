@@ -1,0 +1,696 @@
+/* LLMAXX Animation Styles */
+
+/* Entrance Animations */
+.entrance-slide-left {
+  animation: entranceSlideLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.entrance-slide-right {
+  animation: entranceSlideRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.entrance-slide-up {
+  animation: entranceSlideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.entrance-slide-down {
+  animation: entranceSlideDown 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.entrance-fade-in {
+  animation: entranceFadeIn 0.3s ease-out;
+}
+
+.entrance-scale-in {
+  animation: entranceScaleIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.entrance-rotate-in {
+  animation: entranceRotateIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Exit Animations */
+.exit-slide-left {
+  animation: exitSlideLeft 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.exit-slide-right {
+  animation: exitSlideRight 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.exit-slide-up {
+  animation: exitSlideUp 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.exit-slide-down {
+  animation: exitSlideDown 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.exit-fade-out {
+  animation: exitFadeOut 0.2s ease-in;
+}
+
+.exit-scale-out {
+  animation: exitScaleOut 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+/* Hover Animations */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+}
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform 0.3s ease;
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
+}
+
+/* Loading Animations */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-pulse {
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+.loading-skeleton {
+  background: linear-gradient(90deg, var(--bg-tertiary), var(--bg-secondary), var(--bg-tertiary));
+  background-size: 200% 100%;
+  animation: loadingSkeleton 1.5s ease-in-out infinite;
+}
+
+.loading-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  animation: loadingDots 1.4s ease-in-out infinite;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: 0s; }
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Notification Animations */
+.notification-slide-in {
+  animation: notificationSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.notification-slide-out {
+  animation: notificationSlideOut 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.notification-bounce {
+  animation: notificationBounce 0.6s ease;
+}
+
+/* Radial Menu Animations */
+.radial-menu-expand {
+  animation: radialMenuExpand 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.radial-menu-collapse {
+  animation: radialMenuCollapse 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.radial-item-appear {
+  animation: radialItemAppear 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.radial-item-disappear {
+  animation: radialItemDisappear 0.2s ease-in;
+  animation-fill-mode: both;
+}
+
+/* Message Animations */
+.message-appear {
+  animation: messageAppear 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.message-typing {
+  animation: messageTyping 0.1s ease-in-out infinite alternate;
+}
+
+.typing-indicator {
+  display: inline-flex;
+  gap: 2px;
+  padding: 8px 12px;
+}
+
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  animation: typingIndicator 1.4s ease-in-out infinite;
+}
+
+.typing-indicator span:nth-child(1) { animation-delay: 0s; }
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Status Animations */
+.status-online {
+  animation: statusOnline 0.5s ease;
+}
+
+.status-offline {
+  animation: statusOffline 0.5s ease;
+}
+
+.status-warning {
+  animation: statusWarning 1s ease-in-out infinite;
+}
+
+/* Progress Animations */
+.progress-fill {
+  animation: progressFill 0.6s ease-out;
+}
+
+.progress-pulse {
+  animation: progressPulse 2s ease-in-out infinite;
+}
+
+/* Button Animations */
+.button-press {
+  animation: buttonPress 0.1s ease;
+}
+
+.button-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  transition: width 0.6s, height 0.6s;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.button-ripple:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Panel Animations */
+.panel-slide-in {
+  animation: panelSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.panel-slide-out {
+  animation: panelSlideOut 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.panel-expand {
+  animation: panelExpand 0.3s ease-out;
+}
+
+.panel-collapse {
+  animation: panelCollapse 0.2s ease-in;
+}
+
+/* Scroll Animations */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+.scroll-fade-in {
+  opacity: 0;
+  animation: scrollFadeIn 0.5s ease forwards;
+}
+
+/* Particle Effects */
+.particle-sparkle {
+  position: absolute;
+  pointer-events: none;
+  animation: particleSparkle 1s ease-out forwards;
+}
+
+.particle-float {
+  position: absolute;
+  pointer-events: none;
+  animation: particleFloat 3s ease-in-out infinite;
+}
+
+/* Background Animations */
+.bg-pulse {
+  animation: bgPulse 4s ease-in-out infinite;
+}
+
+.bg-gradient-shift {
+  background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), var(--bg-tertiary), var(--bg-secondary));
+  background-size: 400% 400%;
+  animation: bgGradientShift 15s ease infinite;
+}
+
+/* Keyframes */
+@keyframes entranceSlideLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes entranceSlideRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes entranceSlideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes entranceSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes entranceFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes entranceScaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes entranceRotateIn {
+  from {
+    transform: rotate(-180deg) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes exitSlideLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes exitSlideRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes exitSlideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes exitSlideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes exitFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes exitScaleOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes loadingPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes loadingSkeleton {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes loadingDots {
+  0%, 80%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+@keyframes notificationSlideIn {
+  from {
+    transform: translateY(-100%) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes notificationSlideOut {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes notificationBounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40%, 43% {
+    transform: translateY(-10px);
+  }
+  70% {
+    transform: translateY(-5px);
+  }
+  90% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes radialMenuExpand {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes radialMenuCollapse {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes radialItemAppear {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes radialItemDisappear {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes messageAppear {
+  from {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes messageTyping {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+@keyframes typingIndicator {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+@keyframes statusOnline {
+  from {
+    background-color: var(--status-offline);
+    box-shadow: 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  to {
+    background-color: var(--status-online);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  }
+}
+
+@keyframes statusOffline {
+  from {
+    background-color: var(--status-online);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  }
+  to {
+    background-color: var(--status-offline);
+    box-shadow: 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+}
+
+@keyframes statusWarning {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes progressFill {
+  from { width: 0; }
+  to { width: var(--progress-target, 0); }
+}
+
+@keyframes progressPulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes buttonPress {
+  from { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  to { transform: scale(1); }
+}
+
+@keyframes panelSlideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes panelSlideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes panelExpand {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 1000px;
+    opacity: 1;
+  }
+}
+
+@keyframes panelCollapse {
+  from {
+    max-height: 1000px;
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes scrollFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes particleSparkle {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  66% {
+    transform: translateY(5px) translateX(-5px);
+  }
+}
+
+@keyframes bgPulse {
+  0%, 100% {
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes bgGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

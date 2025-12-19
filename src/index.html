@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLMAXX - AI Desktop Overlay</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/animations.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+  <div class="main-container">
+    <!-- Character/Contacts Button (Upper Left) -->
+    <div class="character-button interactive-element" id="characterButton">
+      <div class="button-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </div>
+      <span class="button-text">Characters</span>
+    </div>
+
+    <!-- Radial Menu for Characters (Hidden by default) -->
+    <div class="radial-menu hidden" id="characterRadialMenu">
+      <div class="radial-item" data-action="ai-contacts">
+        <div class="radial-icon">🤖</div>
+        <span>AI Contacts</span>
+      </div>
+      <div class="radial-item" data-action="create-contact">
+        <div class="radial-icon">➕</div>
+        <span>Create Contact</span>
+      </div>
+      <div class="radial-item" data-action="import-characters">
+        <div class="radial-icon">📥</div>
+        <span>Import</span>
+      </div>
+      <div class="radial-item" data-action="character-settings">
+        <div class="radial-icon">⚙️</div>
+        <span>Settings</span>
+      </div>
+    </div>
+
+    <!-- Left Side Control Panel -->
+    <div class="left-controls panel interactive-element">
+      <div class="control-group">
+        <button class="control-button" data-panel="prompts">
+          <span class="control-icon">📝</span>
+          <span>System Prompts</span>
+        </button>
+        <button class="control-button" data-panel="ai-config">
+          <span class="control-icon">🧠</span>
+          <span>AI Configuration</span>
+        </button>
+        <button class="control-button" data-panel="server">
+          <span class="control-icon">🌐</span>
+          <span>Server Settings</span>
+        </button>
+      </div>
+      
+      <div class="control-group">
+        <button class="control-button" id="extensionsButton">
+          <span class="control-icon">🔌</span>
+          <span>Extensions</span>
+        </button>
+        <button class="control-button" data-panel="appearance">
+          <span class="control-icon">🎨</span>
+          <span>Appearance</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Extensions Radial Menu (Hidden by default) -->
+    <div class="radial-menu hidden" id="extensionsRadialMenu">
+      <div class="radial-item" data-action="plugin-manager">
+        <div class="radial-icon">🧩</div>
+        <span>Plugin Manager</span>
+      </div>
+      <div class="radial-item" data-action="custom-scripts">
+        <div class="radial-icon">📜</div>
+        <span>Custom Scripts</span>
+      </div>
+      <div class="radial-item" data-action="voice-input">
+        <div class="radial-icon">🎤</div>
+        <span>Voice Input</span>
+      </div>
+      <div class="radial-item" data-action="image-gen">
+        <div class="radial-icon">🖼️</div>
+        <span>Image Generation</span>
+      </div>
+    </div>
+
+    <!-- Chat Window (Right 33% - Collapsible) -->
+    <div class="chat-window panel interactive-element" id="chatWindow">
+      <div class="chat-header flex-between">
+        <div class="chat-title">
+          <h3 class="heading">AI Chat</h3>
+          <span class="text-muted" id="activeCharacter">No character selected</span>
+        </div>
+        <div class="chat-controls">
+          <button class="icon-button" id="toggleChat" title="Toggle Chat">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+          <button class="icon-button" id="clearChat" title="Clear Chat">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 6h18"></path>
+              <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <div class="chat-messages" id="chatMessages">
+        <div class="message system-message">
+          <div class="message-content">
+            Welcome to LLMAXX! Select a character to start chatting.
+          </div>
+        </div>
+      </div>
+      
+      <div class="chat-input-container">
+        <div class="chat-input-wrapper">
+          <textarea 
+            class="chat-input" 
+            id="chatInput" 
+            placeholder="Type your message..."
+            rows="2"
+          ></textarea>
+          <button class="send-button" id="sendButton">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13"></path>
+              <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collapsed Chat Indicator (Top Right, Hidden by default) -->
+    <div class="collapsed-chat-indicator hidden interactive-element" id="collapsedChatIndicator">
+      <div class="indicator-content">
+        <span class="message-count" id="messageCount">0</span>
+        <button class="expand-button" id="expandChat">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- System Monitor Widget (Bottom Left) -->
+    <div class="system-monitor panel interactive-element">
+      <div class="monitor-header">
+        <h4 class="subheading">System Monitor</h4>
+        <button class="icon-button" id="systemSettings" title="System Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M1.54 9.96l4.24 4.24M20.46 14.04l-4.24 4.24M7.78 7.78L3.54 3.54"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="monitor-content">
+        <div class="monitor-item">
+          <span class="monitor-label">CPU</span>
+          <div class="monitor-bar">
+            <div class="monitor-fill" id="cpuBar" style="width: 0%"></div>
+            <span class="monitor-value" id="cpuValue">0%</span>
+          </div>
+        </div>
+        
+        <div class="monitor-item">
+          <span class="monitor-label">Memory</span>
+          <div class="monitor-bar">
+            <div class="monitor-fill" id="memBar" style="width: 0%"></div>
+            <span class="monitor-value" id="memValue">0%</span>
+          </div>
+        </div>
+        
+        <div class="monitor-item">
+          <span class="monitor-label">Ollama</span>
+          <div class="status-indicator" id="ollamaStatus">
+            <span class="status-dot"></span>
+            <span class="status-text">Checking...</span>
+          </div>
+        </div>
+        
+        <div class="monitor-item">
+          <span class="monitor-label">Server</span>
+          <div class="status-indicator online" id="serverStatus">
+            <span class="status-dot"></span>
+            <span class="status-text">Online</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- World Info Panel (Bottom, Collapsible) -->
+    <div class="world-info panel interactive-element" id="worldInfo">
+      <div class="world-info-header flex-between">
+        <h4 class="subheading">World Information</h4>
+        <button class="icon-button" id="toggleWorldInfo" title="Toggle World Info">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="world-info-content" id="worldInfoContent">
+        <div class="world-info-section">
+          <h5 class="text-muted">Active Lore</h5>
+          <div class="lore-items" id="loreItems">
+            <div class="lore-item">
+              <span class="lore-key">Setting:</span>
+              <span class="lore-value">Modern Day</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="world-info-section">
+          <h5 class="text-muted">Character Notes</h5>
+          <div class="character-notes" id="characterNotes">
+            <p class="text-muted">No character selected</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collapsed World Info Bar -->
+    <div class="collapsed-world-info hidden" id="collapsedWorldInfo">
+      <div class="collapsed-bar flex-center">
+        <span>World Info</span>
+        <button class="expand-button" id="expandWorldInfo">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Settings Panels (Hidden by default) -->
+    <div class="settings-overlay hidden" id="settingsOverlay">
+      <div class="settings-panel panel">
+        <div class="settings-header flex-between">
+          <h3 class="heading" id="settingsTitle">Settings</h3>
+          <button class="icon-button" id="closeSettings">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="settings-content" id="settingsContent">
+          <!-- Dynamic content will be loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Character Management Modal -->
+    <div class="character-modal hidden" id="characterModal">
+      <div class="modal-content panel">
+        <div class="modal-header flex-between">
+          <h3 class="heading" id="modalTitle">Character Management</h3>
+          <button class="icon-button" id="closeModal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="modal-body" id="modalBody">
+          <!-- Dynamic character management content -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="utils/constants.js"></script>
+  <script src="utils/storage.js"></script>
+  <script src="utils/api.js"></script>
+  <script src="components/radialMenu.js"></script>
+  <script src="components/chat.js"></script>
+  <script src="components/systemMonitor.js"></script>
+  <script src="components/worldInfo.js"></script>
+  <script src="components/characterManager.js"></script>
+  <script src="components/settings.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
